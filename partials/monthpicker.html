@@ -1,4 +1,6 @@
-<div class="datepicker-months" style="display: block;">
+<input type="text" ng-model="monthModel"/>
+<div style="position:relative">
+<div class="datepicker-months" style="display: block;" ng-hide="pickerHide">
     <table class="table-condensed">
         <thead>
         <tr>
@@ -10,18 +12,8 @@
         <tbody>
         <tr>
             <td colspan="7">
-                <span class="month">Jan</span>
-                <span class="month">Feb</span>
-                <span class="month">Mar</span>
-                <span class="month">Apr</span>
-                <span class="month">May</span>
-                <span class="month">Jun</span>
-                <span class="month">Jul</span>
-                <span class="month">Aug</span>
-                <span class="month">Sep</span>
-                <span class="month">Oct</span>
-                <span class="month">Nov</span>
-                <span class="month">Dec</span>
+                <span class="month" ng-repeat="yearMonth in yearMonths" ng-class="{'active':yearMonth==monthModel}" ng-click="$parent.monthModel=yearMonth">{{yearMonth}}</span>
+
             </td>
         </tr>
         </tbody>
@@ -34,4 +26,5 @@
         </tr>
         </tfoot>
     </table>
+</div>
 </div>

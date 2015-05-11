@@ -1,5 +1,7 @@
 .datepicker-months{
-position: relative;
+
+     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+position: absolute;
   top: 100%;
   left: 0;
   z-index: 1000;
@@ -39,4 +41,20 @@ display: block;
 .datepicker-months table{
     border-collapse:collapse;
     min-width:100%;
+}
+.datepicker-months td,.datepicker-months td{
+    text-align: center;
+      width: 20px;
+      height: 20px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      border: none;
+
+}
+.datepicker-months table tr td span:hover{
+    background:#eeeeee;
+}
+.datepicker-months table tr td span.active.active{
+    background-color:#628EE7;
 }
