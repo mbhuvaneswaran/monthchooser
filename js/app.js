@@ -10,28 +10,51 @@ app.directive("monthChooser",function(){
 
 
             //elm[0].addEventListener("click",onclickEvent);
-            elm[0].querySelector("input").addEventListener("focus",getOnFocusEvent);
-            elm[0].querySelector(".datepicker-months").addEventListener("blur",getBlurEvent(scope));
-            elm[0].ownerDocument.body.addEventListener("click",getClickEvent(scope));
+           // elm[0].querySelector("input").addEventListener("focus",getOnFocusEvent);
+            elm[0].querySelector(".datepicker-months").addEventListener("blur",getBlurEvent);
+            elm[0].style.display="inline-block";
+            elm[0].ownerDocument.body.addEventListener("click",getClickEvent);
              scope.pickerHide=true;
-             function onclickEvent(){
-                     event.srcElement.style.display=""
-                 }
+
                  function getOnFocusEvent(){
 
                      scope.$apply(scope.pickerHide=false);
 
                  }
-                 function getBlurEvent(scope){
-                     return function(){
-                         scope.pickerHide=true;
-                     }
+                 function getBlurEvent(){
+
+                         scope.$apply(scope.pickerHide=true);
+
                  }
-                 function getClickEvent(scope){
-                     return function(){
+                 function getClickEvent(){
+                     if(closest(event.target,"month-chooser")){
+                            scope.$apply(scope.pickerHide=false);
+                           return;
+                     }
+                     scope.$apply(scope.pickerHide=true);
+
+
+
+                 }
+                 function closest(el, clazz) {
+
+
+                     // Traverse the DOM up with a while loop
+                     while (el.className.indexOf(clazz) == -1) {
+                         // Increment the loop to the parent node
+                         el = el.parentNode;
+                         if ((!el) || (el==document)){
+                             return null;
+                         }
 
                      }
+                     // At this point, the while loop has stopped and `el` represents the element that has
+                     // the class you specified in the second parameter of the function `clazz`
+
+                     // Then return the matched element
+                     return el;
                  }
+
         },
         scope:{
             monthModel:'='
