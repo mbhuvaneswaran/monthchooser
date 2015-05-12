@@ -15,7 +15,10 @@ app.directive("monthChooser",function(){
             elm[0].style.display="inline-block";
             elm[0].ownerDocument.body.addEventListener("click",getClickEvent);
              scope.pickerHide=true;
-
+                scope.year=2015;
+                scope.nextYear=function(year){
+                    scope.year=scope.year+parseInt(year);
+                }
                  function getOnFocusEvent(){
 
                      scope.$apply(scope.pickerHide=false);
@@ -43,7 +46,7 @@ app.directive("monthChooser",function(){
                      while (el.className.indexOf(clazz) == -1) {
                          // Increment the loop to the parent node
                          el = el.parentNode;
-                         if ((!el) || (el==document)){
+                         if ((!el) || (el.nodeType==9)){
                              return null;
                          }
 
@@ -61,7 +64,8 @@ app.directive("monthChooser",function(){
 
         },
         restrict:"EA",
-        templateUrl:"partials/monthpicker.html"
+        templateUrl:"partials/monthpicker.html",
+         transclude: true
 
     }
     return directive;

@@ -1,12 +1,13 @@
-<div>{{monthModel}}</div>
+<div>
+<ng-transclude></ng-transclude></div>
 <div style="position:relative;overflow:auto;display:inline-block">
 <div class="datepicker-months" style="display: block;" ng-hide="pickerHide">
     <table class="table-condensed">
         <thead>
         <tr>
-            <th class="prev" style="visibility: visible;">«</th>
-            <th colspan="5" class="datepicker-switch">2015</th>
-            <th class="next" style="visibility: visible;">»</th>
+            <th class="prev" style="visibility: visible;" ng-click="nextYear(-1)">«</th>
+            <th colspan="5" class="datepicker-switch">{{year}}</th>
+            <th class="next" style="visibility: visible;" ng-click="nextYear(1)">»</th>
         </tr>
         </thead>
         <tbody>
